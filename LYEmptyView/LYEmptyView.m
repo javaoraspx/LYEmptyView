@@ -62,8 +62,11 @@
     contentHeight = 0;//内容物高度
     subViweMargin = self.subViewMargin ? self.subViewMargin : kSubViewMargin;
     
-    //占位图片
-    UIImage *image = [UIImage imageNamed:self.imageStr];
+    //占位图片 fixbug:CUICatalog: Invalid asset name supplied
+    UIImage *image = nil;
+    if(self.imageStr.length > 0){
+        image = [UIImage imageNamed:self.imageStr];
+    }
     if(self.image){
         [self setupPromptImageView:self.image];
     }else if (image) {
